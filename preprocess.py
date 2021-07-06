@@ -4,6 +4,10 @@ import numpy as np
 import music21 as m21
 import tensorflow.keras as keras
 
+env = m21.environment.Environment()
+env['musescoreDirectPNGPath'] = R'C:\Program Files\MuseScore 3\bin\MuseScore3.exe'
+env['musicxmlPath'] = R'C:\Program Files\MuseScore 3\bin\MuseScore3.exe'
+
 KERN_DATASET_PATH = "deutschl/erk"
 SAVE_DIR = "dataset"
 SINGLE_FILE_DATASET = "file_dataset"
@@ -21,7 +25,6 @@ ACCEPTABLE_DURATIONS = [
     3,
     4 # whole note
 ]
-
 
 def load_songs_in_kern(dataset_path):
     """Loads all kern pieces in dataset using music21.
@@ -51,7 +54,6 @@ def has_acceptable_durations(song, acceptable_durations):
             return False
     return True
 
-
 def transpose(song):
     """Transposes song to C maj/A min
     :param piece (m21 stream): Piece to transpose
@@ -76,7 +78,6 @@ def transpose(song):
     # transpose song by calculated interval
     tranposed_song = song.transpose(interval)
     return tranposed_song
-
 
 def encode_song(song, time_step=0.25):
     """Converts a score into a time-series-like music representation. Each item in the encoded list represents 'min_duration'
@@ -115,6 +116,7 @@ def encode_song(song, time_step=0.25):
 
     return encoded_song
 
+#-----------------------------------------------------------
 
 def preprocess(dataset_path):
 

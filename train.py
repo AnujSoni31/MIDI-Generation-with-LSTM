@@ -4,12 +4,14 @@ from preprocess import generate_training_sequences, SEQUENCE_LENGTH
 OUTPUT_UNITS = 38
 LOSS = "sparse_categorical_crossentropy"
 NUM_UNITS = [256] # hidden layer neurons
+
 '''
 num_units is a list containing num of neurons in each layer
 Ex. [256, 256] -> two LSTM layers with 256 neurons each
 '''
+
 LEARNING_RATE = 0.001
-EPOCHS = 5
+EPOCHS = 1
 BATCH_SIZE = 64 # no. of samples 
 SAVE_MODEL_PATH = "model.h5" # *.h5 is the extension
 
